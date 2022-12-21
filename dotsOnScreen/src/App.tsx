@@ -50,8 +50,8 @@ export const App = () => {
                 transform: "translate(-50%, -50%)",
                 position: "absolute",
                 borderRadius: "50%",
-                width: "10px",
-                height: "10git branchpx",
+                width: "8px",
+                height: "8px",
                 background: "red",
               }}
             ></div>
