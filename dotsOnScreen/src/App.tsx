@@ -1,0 +1,63 @@
+import { useState } from "react";
+import "./App.css";
+
+interface IclickedAxe {
+  clientX: number;
+  clientY: number;
+}
+
+export const App = () => {
+  const [axe, setAxe] = useState<IclickedAxe[]>([]);
+  const [toRedo, setToRedo] = useState<IclickedAxe[]>([]);
+
+  const getCoordinates = ({ clientX, clientY }: React.MouseEvent<HTMLElement>) => {
+    setAxe([...axe, { clientX, clientY }]);
+  };
+
+  const handleUndo = () => {
+    const nAxe = [...axe];
+    const undoAxe = nAxe.pop();
+    setAxe(nAxe);
+    if (!undoAxe) return;
+    setToRedo([...toRedo, undoAxe]);
+  };
+
+  const handleRedo = () => {
+    const nToRedo = [...toRedo]
+    const redo = nToRedo.pop()
+    if(!redo) return
+    setToRedo(nToRedo)
+    setAxe([...axe, redo ])
+
+  };
+
+  return (
+    <>
+      <button disabled={axe.length === 0} onClick={handleUndo}>
+        Undo
+      </button>
+      <button disabled={toRedo.length === 0} onClick={handleRedo}>
+        Redo
+      </button>
+      <div className="App" onClick={getCoordinates}>
+        {axe.map(({ clientX, clientY }, i) => {
+          return (
+            <div
+              key={i}
+              style={{
+                left: clientX,
+                top: clientY,
+                transform: "translate(-50%, -50%)",
+                position: "absolute",
+                borderRadius: "50%",
+                width: "10px",
+                height: "10git branchpx",
+                background: "red",
+              }}
+            ></div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
