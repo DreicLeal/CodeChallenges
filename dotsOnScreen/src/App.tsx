@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-
+import { DotStyle } from "./style";
 interface IclickedAxe {
   clientX: number;
   clientY: number;
@@ -10,7 +10,10 @@ export const App = () => {
   const [axe, setAxe] = useState<IclickedAxe[]>([]);
   const [toRedo, setToRedo] = useState<IclickedAxe[]>([]);
 
-  const getCoordinates = ({ clientX, clientY }: React.MouseEvent<HTMLElement>) => {
+  const getCoordinates = ({
+    clientX,
+    clientY,
+  }: React.MouseEvent<HTMLElement>) => {
     setAxe([...axe, { clientX, clientY }]);
   };
 
@@ -23,12 +26,11 @@ export const App = () => {
   };
 
   const handleRedo = () => {
-    const nToRedo = [...toRedo]
-    const redo = nToRedo.pop()
-    if(!redo) return
-    setToRedo(nToRedo)
-    setAxe([...axe, redo ])
-
+    const nToRedo = [...toRedo];
+    const redo = nToRedo.pop();
+    if (!redo) return;
+    setToRedo(nToRedo);
+    setAxe([...axe, redo]);
   };
 
   return (
@@ -41,21 +43,7 @@ export const App = () => {
       </button>
       <div className="App" onClick={getCoordinates}>
         {axe.map(({ clientX, clientY }, i) => {
-          return (
-            <div
-              key={i}
-              style={{
-                left: clientX,
-                top: clientY,
-                transform: "translate(-50%, -50%)",
-                position: "absolute",
-                borderRadius: "50%",
-                width: "8px",
-                height: "8px",
-                background: "red",
-              }}
-            ></div>
-          );
+          return <DotStyle key={i} top={clientY} left={clientX}></DotStyle>;
         })}
       </div>
     </>
