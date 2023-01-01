@@ -15,6 +15,7 @@ interface iCardProviderProps {
 
   interface iCardContext {
     cards: iCards[]
+    setCards: React.Dispatch<React.SetStateAction<iCards[]>>
   }
 export const CardContext = createContext({} as iCardContext)
 
@@ -41,7 +42,7 @@ export const CardsProvider = ({children}: iCardProviderProps) => {
       );    
 
       return (
-        <CardContext.Provider value={{cards}}>
+        <CardContext.Provider value={{cards, setCards}}>
             {children}
         </CardContext.Provider>
       )

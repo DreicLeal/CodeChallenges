@@ -1,4 +1,5 @@
 import { ReactComponentElement, useContext, useState } from "react";
+import { CardContext } from "../Providers/CardContext";
 import { Card } from "./cards";
 
 export interface IFlipped {
@@ -15,27 +16,7 @@ interface ICards {
 }
 
 export const Cards = () => {
-  const {cards} = useContext();
-  // const [cards, setCards] = useState(
-  //   [
-  //     { isRevealed: false, image: "random1", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random1", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random2", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random2", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random3", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random3", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random4", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random4", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random5", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random5", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random6", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random6", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random7", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random7", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random8", hiddenSide: "HIDDEN" },
-  //     { isRevealed: false, image: "random8", hiddenSide: "HIDDEN" },
-  //   ].sort(() => Math.random() - 0.5)
-  // );
+  const {cards, setCards} = useContext(CardContext);
 
   return (
     <div className="cardContainer">
