@@ -5,7 +5,7 @@ interface iCardProviderProps {
     children: ReactNode;
   }
 
-  interface iCards {
+  export interface iCard {
     isRevealed: boolean;
     image: string;
     hiddenSide: string;
@@ -14,8 +14,8 @@ interface iCardProviderProps {
 
 
   interface iCardContext {
-    cards: iCards[]
-    setCards: React.Dispatch<React.SetStateAction<iCards[]>>
+    cards: iCard[]
+    setCards: React.Dispatch<React.SetStateAction<iCard[]>>
   }
 export const CardContext = createContext({} as iCardContext)
 
@@ -38,7 +38,7 @@ export const CardsProvider = ({children}: iCardProviderProps) => {
           { isRevealed: false, image: "random7", hiddenSide: "HIDDEN" },
           { isRevealed: false, image: "random8", hiddenSide: "HIDDEN" },
           { isRevealed: false, image: "random8", hiddenSide: "HIDDEN" },
-        ].sort(() => Math.random() - 0.5)
+        ]//.sort(() => Math.random() - 0.5)
       );    
 
       return (

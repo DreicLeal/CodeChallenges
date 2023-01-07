@@ -1,32 +1,34 @@
-import { useState } from "react";
-import { IFlipped } from "./cardsContainer";
+import { useContext, useEffect, useState } from "react";
+import { CardContext, iCard } from "../Providers/CardContext";
 
-export const Card = ({ image, cards, setCards, cardIndex }: IFlipped) => {
 
-    const [clicked, setClicked] = useState<string>("teste");
+export const Card = ( elem:any, key:number) => {
+  console.log(elem)
+  const [clicked, setClicked] = useState<string[]>([]);
+  const { cards, setCards } = useContext(CardContext);
+  
+  const check = (clicked: any) => {
 
-const check = (current: string) => {
-    console.log(clicked)
-if(clicked == current){
-}
-}
+    setClicked(clicked.image);
 
+  };
+  
+  
   const handleFlip = (index: number) => {
+    const nCards = [...cards];
     if (!cards[index].isRevealed) {
-      const nCards = [...cards];
-      nCards[index].isRevealed = !nCards[index].isRevealed;
+      nCards[index].isRevealed = true;
       setCards(nCards);
-      const urlImg = cards[index].image
-      setClicked(urlImg)
-      check(cards[index].image)
+     check(nCards[index])
+      
     }
   };
 
   return (
-    <p onClick={() => handleFlip(cardIndex)} className="card">
-      {cards[cardIndex].isRevealed
-        ? cards[cardIndex].image
-        : cards[cardIndex].hiddenSide}
+    <p onClick={() => handleFlip(key)} className="card">
+      {elem.isRevealed
+        ? elem.image
+        : elem.hiddenSide}
     </p>
   );
 };
