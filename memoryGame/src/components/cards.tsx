@@ -1,8 +1,11 @@
+import { iItems, iProps } from "../App";
 import { Card } from "./Card";
 
-export const Cards = ({items, setItems, setFirstClicked, firstClicked}: any) => {
 
-  const check = (current: any) => {
+
+export const Cards = ({items, setItems, setFirstClicked, firstClicked}: iProps) => {
+
+  const check = (current: number) => {
     if (items[current].id == items[firstClicked].id && items.indexOf(items[current]) !== items.indexOf(items[firstClicked])) {
       items[current].stats = "right";
       items[firstClicked].stats = "right";
@@ -21,19 +24,21 @@ export const Cards = ({items, setItems, setFirstClicked, firstClicked}: any) => 
     }
   };
 
-  const handleClick = (id: number) => {
-    firstClicked == -1 ?
-     (setFirstClicked(id),
-     items[id].stats = "active",
-     setItems([...items]),
-     setFirstClicked(id)
-     ): check(id);
+  const handleClick = (id: number):void => {
+    if(!items[id].stats){
+      firstClicked == -1 ?
+       (setFirstClicked(id),
+       items[id].stats = "active",
+       setItems([...items]),
+       setFirstClicked(id)
+       ): check(id);
+    }
 
   };
 
   return (
     <div className="container">
-      {items.map((item:any, i:number) => (
+      {items.map((item:iItems, i:number) => (
         <Card item={item} key={i} id={i} handleClick={handleClick} />
       ))}
     </div>

@@ -22,8 +22,9 @@
 .card > img {
   width: 80%;
   height: 80%;
-  transform: scale(0);
+  opacity: 0;
   animation: 2s hideImg;
+  transition: 1s;
 }
 
 @keyframes hideImg {
