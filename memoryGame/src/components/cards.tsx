@@ -1,4 +1,4 @@
-import { iItems, iProps } from "../App";
+import { iItems, iProps } from "../interfaces";
 import { Card } from "./Card";
 
 
