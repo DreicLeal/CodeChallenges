@@ -5,3 +5,8 @@
   padding: 2rem;
   text-align: center;
 }
+
+.header-container{
+  max-width: 80%; 
+  margin: auto;
+}

@@ -1,6 +1,6 @@
 import { iItems, iProps } from "../interfaces";
 import { Card } from "./Card";
-
+import "./Cards.css"
 
 
 export const Cards = ({items, setItems, setFirstClicked, firstClicked}: iProps) => {

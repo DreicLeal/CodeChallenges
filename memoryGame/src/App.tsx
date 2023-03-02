@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Cards } from "./components/Cards";
 import { cards } from "./database";
 import { iItems } from "./interfaces";
+import "./App.css"
 
 
 export const App = () => {
